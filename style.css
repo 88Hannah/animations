@@ -30,8 +30,11 @@ h1 {
     width: var(--width-unit);
     height: var(--height-unit);
     transform-origin: 100% 50%;
-    animation: flip-initial 1s linear 1s forwards;
+    /* animation: flip-initial 1s linear 1s forwards; */
+}
 
+.open > .initial {
+    animation: flip-initial 1s linear forwards;
 }
 
 .mini-hero {
@@ -40,11 +43,16 @@ h1 {
     height: var(--height-unit);
     position: absolute;
     bottom: 100%;
-    opacity: 0.5;
+    /* opacity: 0.5; */
     transform: rotateX(180deg);
     transform-origin: 50% 100%;
     visibility: hidden;
-    animation: expand-mini-hero 2s linear 2s forwards;
+    z-index: 10;
+    /* animation: expand-mini-hero 2s linear 2s forwards; */
+}
+
+.open > .mini-hero {
+    animation: expand-mini-hero 2s linear 1s forwards;
 }
 
 .text {
@@ -52,11 +60,17 @@ h1 {
     height: var(--height-unit);
     /* height: calc(2*var(--height-unit)); */
     background-color: lightgreen;
+    color: lightgreen;
     position: absolute;
-    opacity: 0.5;
+    /* opacity: 0.5; */
     top: 0%;
     visibility: hidden;
-    animation: expand-text 1.5s linear 4s forwards;
+    z-index: 5s;
+    /* animation: expand-text 1.5s linear 4s forwards; */
+}
+
+.open .text {
+    animation: expand-text 8s linear 1s forwards;
 }
 
 @keyframes flip-initial {
@@ -73,8 +87,18 @@ h1 {
 
 @keyframes expand-text {
     0% {visibility: visible;}
+    25% {
+        height: var(--height-unit);
+        visibility: visible;
+    }
+    50% {
+        height: calc(2*var(--height-unit));
+        visibility: visible;
+        color: lightgreen;
+    }
     100% {
         height: calc(2*var(--height-unit));
         visibility: visible;
+        color: black;
     }
 }
